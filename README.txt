@@ -90,4 +90,4 @@ In case we need access to external extensions or APIs, it is necessary to create
 
 Note: The extension validates every URL call, i.e., in case of URL redirection, it will assess every intermittent URL hit as well.
 
-For any queries or support, please contact [nagachaitu1270@gmail.com].
+For any queries, please contact [nagachaitu1270@gmail.com].
