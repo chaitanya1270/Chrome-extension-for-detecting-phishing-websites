@@ -1,4 +1,4 @@
-Phishing Detective: Chrome Extension for Detecting Phishing Websites
+                                                                         Chrome Extension for Detecting Phishing Websites
 
 Project Overview
 The Phishing Detection Chrome Extension aims to classify every browsed URL under either the phished or non-phished category upon page load, thereby alerting the user of any malicious activity and preventing intrusion.
