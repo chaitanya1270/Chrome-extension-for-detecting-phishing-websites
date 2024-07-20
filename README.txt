@@ -27,9 +27,7 @@ Required Python libraries: scikit-learn, pandas, numpy
 
 Setting Up the Extension
 1.Clone the Repository
-    git clone 
-    cd phishing-detective
-
+    git clone https://github.com/chaitanya1270/Chrome-extension-for-detecting-phishing-websites.git
 
 2.Load the Extension in Chrome
 Open Chrome and go to chrome://extensions/.
