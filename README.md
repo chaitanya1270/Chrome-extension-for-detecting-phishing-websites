@@ -49,7 +49,7 @@ The **Phishing Detection Chrome Extension** aims to classify every browsed URL i
 
 2. **Run the Training Script**
     ```bash
-    python phishing_detection_models.py
+    python run_algorithms.py.py
     ```
    This will train the neural network, random forest, and SVM models, displaying accuracy and performance metrics.
 
