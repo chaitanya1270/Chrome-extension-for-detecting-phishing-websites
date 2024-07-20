@@ -9,7 +9,6 @@ Alert System: Notifies users with alerts when a phishing site is detected.
 Multiple Feature Analysis: Evaluates URLs based on various criteria like length, presence of special characters, and domain similarity.
 Machine Learning Models: Utilizes neural networks, random forests, and support vector machines for prediction.
 
-
 Files and Directories
 background.js: Contains the background script for the Chrome extension, handling messages and executing scripts.
 content.js: Injected into web pages to collect URL features and send them for analysis.
