@@ -1,25 +1,22 @@
 Phishing Detective: Chrome Extension for Detecting Phishing Websites
 
 Project Overview
-    The Phishing Detection Chrome Extension aims to classify every browsed URL under either the phished or non-phished category upon page load, thereby alerting the user of any malicious activity and preventing intrusion.
+The Phishing Detection Chrome Extension aims to classify every browsed URL under either the phished or non-phished category upon page load, thereby alerting the user of any malicious activity and preventing intrusion.
 
 Features
-    Real-time Phishing Detection: Analyzes URL features and predicts if the site is phishing.
-
-    Alert System: Notifies users with alerts when a phishing site is detected.
-
-    Multiple Feature Analysis: Evaluates URLs based on various criteria like length, presence of special characters, and domain similarity.
-
-    Machine Learning Models: Utilizes neural networks, random forests, and support vector machines for prediction.
+Real-time Phishing Detection: Analyzes URL features and predicts if the site is phishing.
+Alert System: Notifies users with alerts when a phishing site is detected.
+Multiple Feature Analysis: Evaluates URLs based on various criteria like length, presence of special characters, and domain similarity.
+Machine Learning Models: Utilizes neural networks, random forests, and support vector machines for prediction.
 
 
 Files and Directories
-    background.js: Contains the background script for the Chrome extension, handling messages and executing scripts.
-    content.js: Injected into web pages to collect URL features and send them for analysis.
-    manifest.json: Metadata and permissions for the Chrome extension.
-    phishing_detection_models.py: Python script containing machine learning models for phishing detection.
-    Dataset.csv: Sample dataset used for training the machine learning models.
-    Target_Labels.csv: Labels corresponding to the dataset.
+background.js: Contains the background script for the Chrome extension, handling messages and executing scripts.
+content.js: Injected into web pages to collect URL features and send them for analysis.
+manifest.json: Metadata and permissions for the Chrome extension.
+phishing_detection_models.py: Python script containing machine learning models for phishing detection.
+Dataset.csv: Sample dataset used for training the machine learning models.
+Target_Labels.csv: Labels corresponding to the dataset.
 
 
 Installation and Usage
@@ -30,7 +27,7 @@ Required Python libraries: scikit-learn, pandas, numpy
 
 Setting Up the Extension
 1.Clone the Repository
-    git clone https://github.com//phishing-detective.git
+    git clone 
     cd phishing-detective
 
 
