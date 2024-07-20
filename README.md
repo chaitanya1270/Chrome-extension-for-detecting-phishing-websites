@@ -1,92 +1,116 @@
-Chrome Extension for Detecting Phishing Websites
+# Phishing Detection Chrome Extension
 
-Project Overview
-The Phishing Detection Chrome Extension aims to classify every browsed URL under either the phished or non-phished category upon page load, thereby alerting the user of any malicious activity and preventing intrusion.
+## Project Overview
 
-Features
-Real-time Phishing Detection: Analyzes URL features and predicts if the site is phishing.
-Alert System: Notifies users with alerts when a phishing site is detected.
-Multiple Feature Analysis: Evaluates URLs based on various criteria like length, presence of special characters, and domain similarity.
-Machine Learning Models: Utilizes neural networks, random forests, and support vector machines for prediction.
+The **Phishing Detection Chrome Extension** aims to classify every browsed URL into either the "phished" or "non-phished" category upon page load. This helps alert users to potential malicious activity and prevent security breaches.
 
-Files and Directories
-background.js: Contains the background script for the Chrome extension, handling messages and executing scripts.
-content.js: Injected into web pages to collect URL features and send them for analysis.
-manifest.json: Metadata and permissions for the Chrome extension.
-phishing_detection_models.py: Python script containing machine learning models for phishing detection.
-Dataset.csv: Sample dataset used for training the machine learning models.
-Target_Labels.csv: Labels corresponding to the dataset.
+## Features
 
+- **Real-time Phishing Detection**: Analyzes URL features and predicts if the site is phishing.
+- **Alert System**: Notifies users with alerts when a phishing site is detected.
+- **Multiple Feature Analysis**: Evaluates URLs based on criteria like length, special characters, and domain similarity.
+- **Machine Learning Models**: Utilizes neural networks, random forests, and support vector machines for prediction.
 
-Installation and Usage
-Prerequisites
-Google Chrome browser
-Python 3.x installed (for model training)
-Required Python libraries: scikit-learn, pandas, numpy
+## Files and Directories
 
-Setting Up the Extension
-1.Clone the Repository
+- **`background.js`**: Contains the background script for handling messages and executing scripts.
+- **`content.js`**: Injected into web pages to collect URL features and send them for analysis.
+- **`manifest.json`**: Metadata and permissions for the Chrome extension.
+- **`phishing_detection_models.py`**: Python script containing machine learning models for phishing detection.
+- **`Dataset.csv`**: Sample dataset used for training machine learning models.
+- **`Target_Labels.csv`**: Labels corresponding to the dataset.
+
+## Installation and Usage
+
+### Prerequisites
+
+- Google Chrome browser
+- Python 3.x (for model training)
+- Required Python libraries: `scikit-learn`, `pandas`, `numpy`
+
+### Setting Up the Extension
+
+1. **Clone the Repository**
+    ```bash
     git clone https://github.com/chaitanya1270/Chrome-extension-for-detecting-phishing-websites.git
+    ```
 
-2.Load the Extension in Chrome
-Open Chrome and go to chrome://extensions/.
-Enable "Developer mode" using the toggle switch in the top right.
-Click "Load unpacked" and select the directory containing the manifest.json file.
+2. **Load the Extension in Chrome**
+    - Open Chrome and navigate to `chrome://extensions/`.
+    - Enable **"Developer mode"** using the toggle switch in the top right.
+    - Click **"Load unpacked"** and select the directory containing the `manifest.json` file.
 
-Training the Machine Learning Models
-1.Install Dependencies
+### Training the Machine Learning Models
+
+1. **Install Dependencies**
+    ```bash
     pip install scikit-learn pandas numpy
+    ```
 
-2.Run the Training Script
+2. **Run the Training Script**
+    ```bash
     python phishing_detection_models.py
-This will train the neural network, random forest, and SVM models, displaying accuracy and performance metrics.
+    ```
+   This will train the neural network, random forest, and SVM models, displaying accuracy and performance metrics.
 
+### Using the Extension
 
-Using the Extension
-Once the extension is loaded and enabled in Chrome, it will automatically analyze URLs as you browse.
-If a phishing website is detected, you will receive an alert notification.
+Once the extension is loaded and enabled in Chrome, it will automatically analyze URLs as you browse. If a phishing website is detected, you will receive an alert notification.
 
-Test URLs
+### Test URLs
+
 To verify the extension, you can use the following test URLs:
 
-1. "../Engineering Module/Phishing.html" (Test phished page created)
-2.PhishTank (List of phished sites available)
+- **Test Phished Page**: `../Engineering Module/Phishing.html`
+- **PhishTank**: [List of phished sites available](https://www.phishtank.com/)
 
-Machine Learning Algorithms
-1.Support Vector Machine (SVM)
-2.Neural Networks
-3.Random Forest
-The SVM trained persistent model has been passed to the engineering module for phishing detection.
+## Machine Learning Algorithms
 
-Engineering Modules
-1. manifest.json
-It provides Chrome with the basic information about the extension like name, permissions, associated scripts, and files.
+The extension employs various machine learning algorithms for phishing detection:
 
-2. content.js
-It runs in a separate unprivileged JavaScript environment and has complete access to the DOM. Here, the trained SVM model (weights calculated in ./ML Algorithm Evaluation/run_algorithms.py) has been used as a persistent model to classify websites.
+- **Support Vector Machine (SVM)**
+- **Neural Networks**
+- **Random Forest**
 
-Feature Extraction Functions
-    isIPInURL(): Checks if an IP address is present in the URL.
-    isLongURL(): Determines if the URL length is suspiciously long.
-    isTinyURL(): Checks if the URL length is very short.
-    isAlphaNumericURL(): Checks for the presence of special characters like '@'.
-    isRedirectingURL(): Analyzes if the URL contains multiple redirects.
-    isHypenURL(): Checks for hyphens in the URL.
-    isMultiDomainURL(): Counts the number of subdomains.
-    isFaviconDomainUnidentical(): Compares the domain of the favicon to the main URL.
-    isIllegalHttpsURL(): Checks for illegal use of HTTPS.
-    isImgFromDifferentDomain(): Analyzes if images are loaded from different domains.
-    isAnchorFromDifferentDomain(): Analyzes if anchor tags lead to different domains.
-    isScLnkFromDifferentDomain(): Checks if script and link tags come from different domains.
-    isFormActionInvalid(): Analyzes form action URLs.
-    isMailToAvailable(): Checks for 'mailto' links.
-    isStatusBarTampered(): Looks for status bar tampering.
-    isIframePresent(): Checks for the presence of iframes.
-The evaluated feature vector, further passed to predict(data) function, determines the prediction for the website.
+The SVM trained persistent model has been integrated into the engineering module for phishing detection.
 
-3. background.js
-In case we need access to external extensions or APIs, it is necessary to create means of communication between content.js and privileged parts of the extension. This interaction is termed as message passing, which allows different components of the extension to collaborate.
+## Engineering Modules
 
-Note: The extension validates every URL call, i.e., in case of URL redirection, it will assess every intermittent URL hit as well.
+### `manifest.json`
 
-For any queries, please contact [nagachaitu1270@gmail.com].
+Provides Chrome with basic information about the extension, including name, permissions, associated scripts, and files.
+
+### `content.js`
+
+Runs in a separate unprivileged JavaScript environment with full access to the DOM. This script uses the trained SVM model (weights from `./ML Algorithm Evaluation/run_algorithms.py`) for website classification.
+
+#### Feature Extraction Functions
+
+- **`isIPInURL()`**: Checks if an IP address is present in the URL.
+- **`isLongURL()`**: Determines if the URL length is suspiciously long.
+- **`isTinyURL()`**: Checks if the URL length is very short.
+- **`isAlphaNumericURL()`**: Checks for special characters like '@'.
+- **`isRedirectingURL()`**: Analyzes if the URL contains multiple redirects.
+- **`isHypenURL()`**: Checks for hyphens in the URL.
+- **`isMultiDomainURL()`**: Counts the number of subdomains.
+- **`isFaviconDomainUnidentical()`**: Compares the domain of the favicon to the main URL.
+- **`isIllegalHttpsURL()`**: Checks for illegal use of HTTPS.
+- **`isImgFromDifferentDomain()`**: Analyzes if images are loaded from different domains.
+- **`isAnchorFromDifferentDomain()`**: Analyzes if anchor tags lead to different domains.
+- **`isScLnkFromDifferentDomain()`**: Checks if script and link tags come from different domains.
+- **`isFormActionInvalid()`**: Analyzes form action URLs.
+- **`isMailToAvailable()`**: Checks for 'mailto' links.
+- **`isStatusBarTampered()`**: Looks for status bar tampering.
+- **`isIframePresent()`**: Checks for the presence of iframes.
+
+The evaluated feature vector is passed to the `predict(data)` function to determine the website’s classification.
+
+### `background.js`
+
+Handles communication between `content.js` and privileged parts of the extension using message passing. This is crucial for interacting with external extensions or APIs.
+
+> **Note**: The extension validates every URL call, including intermittent URLs during redirection.
+
+## Contact
+
+For any queries, please contact: [nagachaitu1270@gmail.com](mailto:nagachaitu1270@gmail.com)
